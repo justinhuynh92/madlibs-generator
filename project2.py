@@ -2,8 +2,8 @@
 with open("story.txt", "r") as f:
     story = f.read()
 
-#store what different words are
-words = []
+#get unique elements
+words = set()
 #find starting index of the word
 start_of_word = -1
 
@@ -18,7 +18,15 @@ for i, char in enumerate(story):
     if char == target_end and start_of_word != -1:
         #include ending index
         word = story[start_of_word: i + 1]
-        words.append(word)
+        words.add(word)
         start_of_word = -1
 
-print(words)
+#give us value of each of the words
+answers = {}
+#loop through unique words and ask user to give us the value
+for word in words:
+    answer = input("Enter a word for " + word + ": ")
+    #create dictionary that has all the words associated with the value
+    answers[word] = answer
+
+print(answers)
